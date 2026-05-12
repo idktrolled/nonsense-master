@@ -33,6 +33,9 @@ jobs:
           haxelib install hscript 2.4.0        
           haxelib install polymod 1.5.2
           haxelib install hxcpp 4.2.1
+          haxelib install actuate 1.8.9
+          haxelib git extension-webm https://github.com/KadeDev/extension-webm
+          haxelib run lime rebuild extension-webm windows
           haxelib git linc_luajit https://github.com/andreirudenko/linc_luajit
           haxelib git faxe https://github.com/ashea-code/faxe
           haxelib git discord_rpc https://github.com/aidan63/linc_discord-rpc
