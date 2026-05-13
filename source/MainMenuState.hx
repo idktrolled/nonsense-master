@@ -159,24 +159,24 @@ class MainMenuState extends MusicBeatState
 		}
 		if (!selectedSomethin)
 		{
-			if (controls.UP_P)
+			if (controls.UP_P #if mobile || virtualPad.buttonUp.justPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(-1);
 			}
 
-			if (controls.DOWN_P)
+			if (controls.DOWN_P #if mobile || virtualPad.buttonDown.justPressed #end)
 			{
 				FlxG.sound.play(Paths.sound('scrollMenu'));
 				changeItem(1);
 			}
 
-			if (controls.BACK)
+			if (controls.BACK #if mobile || virtualPad.buttonB.justPressed #end)
 			{
 				FlxG.switchState(new TitleState());
 			}
 
-			if (controls.ACCEPT)
+			if (controls.ACCEPT #if mobile || virtualPad.buttonA.justPressed #end)
 			{
 				if (optionShit[curSelected] == 'donate')
 				{
