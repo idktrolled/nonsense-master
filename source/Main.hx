@@ -122,7 +122,7 @@ class Main extends Sprite
 
 	public function setFPSCap(cap:Float)
 	{
-		openfl.Lib.current.stage.frameRate = 120;
+		openfl.Lib.current.stage.frameRate = cap;
 	}
 
 	public function getFPSCap():Float
