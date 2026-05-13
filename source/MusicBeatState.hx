@@ -12,6 +12,10 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
+#if mobile
+import mobile.Hitbox;
+import mobile.VirtualPad;
+#end
 
 class MusicBeatState extends FlxUIState
 {
@@ -21,6 +25,34 @@ class MusicBeatState extends FlxUIState
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;
 	private var controls(get, never):Controls;
+
+	#if mobile
+	var hitbox:Hitbox;
+	var virtualPad:VirtualPad;
+	var dodgeButton:VirtualPad;
+	var camStill:FlxCamera;
+
+	public function addHitboxDodge() {
+		camStill = new FlxCamera();
+		FlxG.cameras.add(camStill);
+		camStill.bgColor.alpha = 0;
+		dodgeButton = new VirtualPad(NONE, D);
+	    dodgeButton.cameras = [camStill];
+        hitbox = new Hitbox();
+		hitbox.cameras = [camStill];
+		dodgeButton.visible = false;
+		add(dodgeButton);
+		add(hitbox);
+	}
+	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
+		camStill = new FlxCamera();
+		FlxG.cameras.add(camStill);
+		camStill.bgColor.alpha = 0;
+		virtualPad = new VirtualPad(DPad, Action);
+		virtualPad.cameras = [camStill];
+		add(virtualPad);
+	}
+	#end
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
