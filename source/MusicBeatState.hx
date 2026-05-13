@@ -29,19 +29,14 @@ class MusicBeatState extends FlxUIState
 	#if mobile
 	var hitbox:Hitbox;
 	var virtualPad:VirtualPad;
-	var dodgeButton:VirtualPad;
 	var camStill:FlxCamera;
 
-	public function addHitboxDodge() {
+	public function addHitbox() {
 		camStill = new FlxCamera();
 		FlxG.cameras.add(camStill);
 		camStill.bgColor.alpha = 0;
-		dodgeButton = new VirtualPad(NONE, D);
-	    dodgeButton.cameras = [camStill];
         hitbox = new Hitbox();
 		hitbox.cameras = [camStill];
-		dodgeButton.visible = false;
-		add(dodgeButton);
 		add(hitbox);
 	}
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
