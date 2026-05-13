@@ -131,7 +131,7 @@ class MainMenuState extends MusicBeatState
 		changeItem();
 
 		#if mobile
-		addVirtualPad(UP_DOWN, A_B);
+		addVirtualPad(UP_DOWN, A_B_C_X_Y_Z);
 		#end
 
 		super.create();
@@ -145,16 +145,16 @@ class MainMenuState extends MusicBeatState
 		{
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
-		if (FlxG.keys.justPressed.B) {
+		if (FlxG.keys.justPressed.B #if mobile || virtualPad.buttonC.justPressed #end) {
 			FlxG.sound.play(Paths.sound('BruhSoundEffect2'));
 		}
-		if (FlxG.keys.justPressed.R) {
+		if (FlxG.keys.justPressed.R #if mobile || virtualPad.buttonX.justPressed #end) {
 			FlxG.sound.play(Paths.sound('FartReverb'));
 		}
-		if (FlxG.keys.justPressed.A) {
+		if (FlxG.keys.justPressed.A #if mobile || virtualPad.buttonY.justPressed #end) {
 			FlxG.sound.play(Paths.sound('AMOGUS'));
 		}
-		if (FlxG.keys.justPressed.N) {
+		if (FlxG.keys.justPressed.N #if mobile || virtualPad.buttonZ.justPressed #end) {
 			FlxG.switchState(new VideoState("assets/videos/dont go here pls/teste.webm", new MainMenuState()));
 		}
 		if (!selectedSomethin)
